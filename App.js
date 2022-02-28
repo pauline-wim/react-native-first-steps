@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 
 export default function App() {
@@ -15,7 +16,10 @@ export default function App() {
 
   const handlePress = () => {
     setShowLoading(true);
-    return alert("Ouh yes... I'm impressed !");
+    return setTimeout(() => {
+      Alert.alert("Ouh yes... I'm impressed !");
+      setShowLoading(false);
+    }, 2000);
   };
 
   return (
