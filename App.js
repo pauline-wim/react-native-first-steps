@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, _useContext, _createContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -6,10 +6,13 @@ import {
   View,
   ScrollView,
   Image,
-  TouchableOpacity,
+  // TouchableOpacity,
   ActivityIndicator,
   Alert,
 } from "react-native";
+import AlertBtn from "./components/AlertBtn";
+
+// export const AppContext = createContext(AppContext);
 
 export default function App() {
   const [showLoading, setShowLoading] = useState(false);
@@ -22,7 +25,13 @@ export default function App() {
     }, 2000);
   };
 
+  // const value = {
+  //   showLoading: showLoading,
+  //   setShowLoading: setShowLoading,
+  // };
+
   return (
+    // <AppContext.Provider value={value}>
     <ScrollView style={styles.container}>
       {/* {console.log(showLoading)} */}
       <View style={styles.textWrapper}>
@@ -39,15 +48,14 @@ export default function App() {
           style={styles.imgIcon}
           source={require("./assets/favicon.png")}
         />
-        <TouchableOpacity onPress={handlePress} style={styles.btn}>
-          <Text style={styles.btnText}>Press me, yes !</Text>
-        </TouchableOpacity>
+        <AlertBtn onPress={handlePress} />
         {showLoading ? (
           <ActivityIndicator style={styles.loader}></ActivityIndicator>
         ) : null}
       </View>
       <StatusBar style="auto" />
     </ScrollView>
+    // </AppContext.Provider>
   );
 }
 
